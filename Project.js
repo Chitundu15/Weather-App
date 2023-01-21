@@ -24,7 +24,6 @@ time.addEventListener("submit", displayDateAndTime);
 function displayCity(response) {
 let temperature = Math.round(response.data.main.temp);
 let city = response.data.name;
-console.log(response.data);
 let temp = document.querySelector("#temperature");
 temp.innerHTML = temperature;
 let humidity = document.querySelector("#humid");
