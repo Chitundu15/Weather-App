@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="C:\Users\milim\Documents\SheCodes\SheCodes Plus\Final Project\TRIALS\trial.css">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  </head>
+<body>
+    <div class="container">
+        <div class="weather">
+          <header>
+           <form class="search-city" id="city-form">
+            <div class="card">
+              <div class="row">
+                <div class="col-6">
+                  <input type="search" class="searching" placeholder="Search City..." autofocus="on" autocomplete="off" id="search-input" />
+                  <input
+                  id="search-button"
+                  type="submit"
+                  value="Search"
+                  class="button"
+                />
+                <input
+                  id="current-button"
+                  type="submit"
+                  value="Current"
+                  class="button"
+                />
+                </div>
+              </div>
+             </div>
+           </form>
+           <h1 id="main-city">Lusaka</h1>
+           <h2>
+            <span id="description"><strong>Sunny</strong> </span>
+            <span>⛅</span>
+           </h2>
+           <h2>
+                <div class="weatherDisplay">
+                    <span class="temperature" id="temperature"> 19 </span>
+                    <span class="units" id="units"><a href="#" id="celcius">°C </a> | <a href="#" id="fahrenheit"> °F</a> </span>
+                </div>
+            </h2>
+          </header>
+          <div class="todaysForecast">
+           <span class="col-4" id="sub">
+            <ul>
+              <li class="todays" id="first-day">Monday</li>
+              <li class="time" id="time">06:30AM</li>
+            </ul>
+           </span>
+           <span class="col-4" id="sub">
+            <ul>
+              <li id="humid">Humidity</li>
+              <li id="wind"> Windspeed</li>
+            </ul>
+           </span>
+          </div>
+        
+          <div class="weekForecast">
+            <span class="row">
+              <span class="col-2" id="weeklytemp">
+                <Span class="weekly-date" id="this-week">Tue
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </Span>
+              </span>
+              <span class="col-2" id="weeklytemp"> 
+                <span class="weekly-date" id="this-week">Wed</span>
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </span>
+              <span class="col-2" id="weeklytemp">
+                <span class="weekly-date" id="this-week">Thur</span>
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </span>
+              <span class="col-2" id="weeklytemp">
+                <span class="weekly-date" id="this-week">Fri</span>
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </span>
+              <span class="col-2" id="weeklytemp">
+                <span class="weekly-date" id="this-week">Sat</span>
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </span>
+              <span class="col-2" id="weeklytemp">
+                <span class="weekly-date" id="this-week">Sun</span>
+                <div class="temperatures">
+                  <span class="max-temp">
+                    23°
+                  </span>
+                  <span class="min-temp">
+                    16°
+                  </span>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+    <div class="code">
+        Coded by Chitundu Milimbo
+    </div>
+    <script src="C:\Users\milim\Documents\SheCodes\SheCodes Plus\Final Project\TRIALS\trial.js"></script>
+</body>
+</html>
