@@ -132,3 +132,6 @@ ul{
     box-shadow: 12px 20px 27px 4px rgba(87, 88, 86, 0.3);
     background: #e4f1fe; 
   }
+  .github:hover{
+    text-decoration: underline;
+  }
