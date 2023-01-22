@@ -28,7 +28,10 @@ city.innerHTML= response.data.city;
 humidity.innerHTML = `Humidity: ${Math.round(response.data.temperature.humidity)}%`;
 windspeed.innerHTML =`Windspeed: ${Math.round(response.data.wind.speed)}kmp/h`
 }
+
+
 function displayCity(response) {
+  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let city = response.data.name;
   let mainIcon  = document.querySelector("#main-icon");
@@ -63,7 +66,9 @@ function displayCity(response) {
   } else {
     time.innerHTML = `${hours}:${minutes}`;
   }
+  getforecast(response.data.coord);
   }
+
   //Search weather
   function handleSubmit(event) {
   event.preventDefault();
@@ -89,3 +94,36 @@ function displayCity(response) {
   let button = document.querySelector("#current-button");
   button.addEventListener("click", showMyPosition);
 
+  //Weekly Forecast
+  function displayForecast(response){
+    console.log(response.data);
+    let forecast = document.querySelector("#week-forecast");
+   let forecastHTML = `<div class="row">`;
+  let days = ["Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  days.forEach(function(days){
+    
+    forecastHTML = forecastHTML + `<span class="col-2" id="weeklytemp">
+    <Span class="weekly-date" id="this-week">${days}<br />
+      <img src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png" width="20px"/>
+    <div class="temperatures">
+      <span class="max-temp">
+        23°
+      </span>
+      <span class="min-temp">
+        16°
+      </span>
+    </div>
+    </Span>
+  </Span>`; 
+  })
+    forecastHTML = forecastHTML+`</div>`;
+  forecast.innerHTML=forecastHTML;
+  
+  }
+  function getforecast(coordinates){
+    console.log(coordinates);
+    let apiKey ="3dce9b1c66837262a25b3f448d354a76";
+    let apiUrl=`https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
+  }

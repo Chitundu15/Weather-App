@@ -8,6 +8,7 @@ ul{
   body{   
     background: linear-gradient(178deg, rgba(201, 234, 252, 0.51) 14.9%, rgba(139, 192, 216, 0.73) 80%);
     font-family: 'Merriweather', serif;
+    margin: 0 auto;
   }
   .code{
     text-align: center;
@@ -127,11 +128,16 @@ ul{
    }
    .card{
     background: blue;
-    padding: 20px;
+    padding: 20px 100px;
     border-radius: 10px;
     box-shadow: 12px 20px 27px 4px rgba(87, 88, 86, 0.3);
     background: #e4f1fe; 
+    margin-top: 20px ;
+    text-align: center;
   }
   .github:hover{
     text-decoration: underline;
+  }
+  .row{
+    max-width: 100%;
   }
