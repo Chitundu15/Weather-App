@@ -83,14 +83,15 @@ let button = document.querySelector("#current-button");
 button.addEventListener("click", showMyPosition);
 
 // Default City
-function defaultCity(){
-  let city="Lusaka";
+function defaultCity(event){
+  event.preventDefault();
+  let city = "Lusaka";
   apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(`${apiUrl}&appid=${apiKey}`).then(displayDefaultCity);
 }
 
 function displayDefaultCity(response){
-  console.log(response);
+  console.log(response.data);
   let city = document.querySelector("#main-city");
   city.innerHTML = response.data.main.name;
   let icon=document.querySelector("main-icon");
