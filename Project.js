@@ -5,7 +5,6 @@ axios.get(apiUrl).then(displayTemp);
 
 //Default City
 function displayTemp(response){
-  console.log(response.data)
 let city = document.querySelector("#main-city");
 let temperature = document.querySelector("#temperature");
 let description = document.querySelector("#description");
@@ -89,3 +88,4 @@ function displayCity(response) {
   }
   let button = document.querySelector("#current-button");
   button.addEventListener("click", showMyPosition);
+
