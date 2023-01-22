@@ -128,7 +128,7 @@ ul{
    }
    .card{
     background: blue;
-    padding: 20px 100px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 12px 20px 27px 4px rgba(87, 88, 86, 0.3);
     background: #e4f1fe; 
@@ -137,7 +137,4 @@ ul{
   }
   .github:hover{
     text-decoration: underline;
-  }
-  .row{
-    max-width: 100%;
   }
