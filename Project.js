@@ -1,8 +1,8 @@
 let now = new Date();
 let apiKey = "bc2cd97eaa209e7d22d8f3c84081655f";
-let defaultCity = "Paris"
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}`;
-axios.get(apiUrl).then(displayTemp);
+let defaultCity = "Lusaka";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayCity);
 
 //Default City
 function displayTemp(response){
@@ -73,11 +73,11 @@ function displayCity(response) {
 
   //Search weather
   function handleSubmit(event) {
-  event.preventDefault();
-  let input = document.querySelector("#search-input");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayCity);
-  
+    event.preventDefault();
+    let apiKey = "2513f3c728b1b5ff4f4347e1a6af22b8";
+    let input = document.querySelector("#search-input");
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(displayCity);
   }
   let city = document.querySelector("#city-form");
   city.addEventListener("submit", handleSubmit);
