@@ -1,10 +1,12 @@
 let now = new Date();
-let apiKey = "2b6fdad0cbd018949c50c70f72250726";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Lusaka&key=b252t4b0o976488cbc694aa15c9f3361&units=metric`;
+let apiKey = "bc2cd97eaa209e7d22d8f3c84081655f";
+let defaultCity = "Paris"
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}`;
 axios.get(apiUrl).then(displayTemp);
 
 //Default City
 function displayTemp(response){
+  console.log(response);
 let city = document.querySelector("#main-city");
 let temperature = document.querySelector("#temperature");
 let description = document.querySelector("#description");
@@ -22,10 +24,10 @@ if (minutes < 10) {
 } else {
   time.innerHTML = `${hours}:${minutes}`;
 }
-description.innerHTML = response.data.condition.description;
-temperature.innerHTML = Math.round(response.data.temperature.current);
+description.innerHTML = response.data.weather[0].description;
+temperature.innerHTML = Math.round(response.data.main.temp);
 city.innerHTML= response.data.city;
-humidity.innerHTML = `Humidity: ${Math.round(response.data.temperature.humidity)}%`;
+humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
 windspeed.innerHTML =`Windspeed: ${Math.round(response.data.wind.speed)}kmp/h`
 }
 
@@ -96,34 +98,38 @@ function displayCity(response) {
 
   //Weekly Forecast
   function displayForecast(response){
-    console.log(response.data);
+    let foreCast = (response.data.daily);
     let forecast = document.querySelector("#week-forecast");
    let forecastHTML = `<div class="row">`;
-  let days = ["Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  days.forEach(function(days){
-    
+
+  foreCast.forEach(function(foreCastDay, index) {
+    if (index < 6){
     forecastHTML = forecastHTML + `<span class="col-2" id="weeklytemp">
-    <Span class="weekly-date" id="this-week">${days}<br />
-      <img src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png" width="20px"/>
+    <Span class="weekly-date" id="this-week">${formatDay(foreCastDay.dt)}<br />
+      <img src="http://openweathermap.org/img/wn/${foreCastDay.weather[0].icon}@2x.png" width="40px"/>
     <div class="temperatures">
       <span class="max-temp">
-        23°
-      </span>
+        ${Math.round(foreCastDay.temp.max)}°C
+      </span>/
       <span class="min-temp">
-        16°
+        ${Math.round(foreCastDay.temp.max)}°C
       </span>
     </div>
     </Span>
-  </Span>`; 
+  </Span>`; }
   })
     forecastHTML = forecastHTML+`</div>`;
   forecast.innerHTML=forecastHTML;
-  
   }
   function getforecast(coordinates){
     console.log(coordinates);
-    let apiKey ="3dce9b1c66837262a25b3f448d354a76";
-    let apiUrl=`https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-    console.log(apiUrl);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
+  }
+  function formatDay(timestamp){
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let date = new Date(timestamp *1000);
+    let day = date.getDay();
+
+    return days[day];
   }
