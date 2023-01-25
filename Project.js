@@ -6,7 +6,6 @@ axios.get(apiUrl).then(displayCity);
 
 //Default City
 function displayTemp(response){
-  console.log(response);
 let city = document.querySelector("#main-city");
 let temperature = document.querySelector("#temperature");
 let description = document.querySelector("#description");
@@ -25,7 +24,7 @@ if (minutes < 10) {
   time.innerHTML = `${hours}:${minutes}`;
 }
 description.innerHTML = response.data.weather[0].description;
-temperature.innerHTML = Math.round(response.data.main.temp);
+temperature.innerHTML = `${Math.round(response.data.main.temp)}`;
 city.innerHTML= response.data.city;
 humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
 windspeed.innerHTML =`Windspeed: ${Math.round(response.data.wind.speed)}kmp/h`
@@ -33,8 +32,7 @@ windspeed.innerHTML =`Windspeed: ${Math.round(response.data.wind.speed)}kmp/h`
 
 
 function displayCity(response) {
-  console.log(response);
-  let temperature = Math.round(response.data.main.temp);
+  let temperature =` ${Math.round(response.data.main.temp)}°C`;
   let city = response.data.name;
   let mainIcon  = document.querySelector("#main-icon");
   mainIcon.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -122,7 +120,6 @@ function displayCity(response) {
   forecast.innerHTML=forecastHTML;
   }
   function getforecast(coordinates){
-    console.log(coordinates);
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
   }
